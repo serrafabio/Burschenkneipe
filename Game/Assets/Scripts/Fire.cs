@@ -7,7 +7,7 @@ using UnityEngine.PlayerLoop;
 public class Fire : MonoBehaviour
 {
     public float firespeed;
-
+    
     // Update is called once per frame
     void Update()
     {
