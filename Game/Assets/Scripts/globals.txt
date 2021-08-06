@@ -1,4 +1,3 @@
-[150] life_ship
-[2]  shoot_enemy
+[100] life_ship
 [100] life_enemy
 [5]  shoot_ship

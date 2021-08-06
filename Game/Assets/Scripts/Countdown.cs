@@ -1,7 +1,4 @@
-using System;
 using System.Collections;
-using System.Collections.Generic;
-using TMPro;
 using UnityEngine;
 using UnityEngine.UI;
 
@@ -18,14 +15,17 @@ public class Countdown : MonoBehaviour
     public ParticleSystem psys_2;
     public ParticleSystem psys_3;
     public AudioSource audio;
+    public GameObject explosion;
 
     private void Start()
     {
+        
         Enemy.SetActive(false);
         Player.SetActive(false);
         Missil_1.SetActive(false);
         Missil_2.SetActive(false);
         Missil_3.SetActive(false);
+        explosion.SetActive(false);
         psys_1.Stop();
         psys_2.Stop();
         psys_3.Stop();
