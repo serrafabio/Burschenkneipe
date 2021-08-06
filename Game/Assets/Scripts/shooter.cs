@@ -5,8 +5,6 @@ using UnityEngine;
 using UnityEngine.UI;
 using UnityEngine.SceneManagement;
 using System.Collections;
-using System.Collections.Generic;
-using Newtonsoft.Json.Serialization;
 
 public class shooter : MonoBehaviour
 {
@@ -62,8 +60,7 @@ public class shooter : MonoBehaviour
             enemy.SetActive(false);
             Debug.Log("Congratulations Player Won!");
             StartCoroutine(waitForSound());
-            
-            }
+        }
     }
 
     void shooting()

@@ -5,6 +5,7 @@ using System.IO;
 using System.Linq;
 using UnityEngine;
 using UnityEngine.UI;
+using UnityEngine.SceneManagement;
 
 public class Enemy : MonoBehaviour
 {
@@ -17,6 +18,7 @@ public class Enemy : MonoBehaviour
     private int Enemy_power = 5;
     private int Player_life;
     private Boolean wait = true;
+    private Boolean stopGame = false;
     private int intactPlayerLife;
     // globals
     private string path = Directory.GetCurrentDirectory() ;
@@ -25,6 +27,10 @@ public class Enemy : MonoBehaviour
     // List
     private List<float> RandomTime = new List<float>{1f,2f,3f,4f};
     private List<int> RandomShooting;
+    // Explosion
+    public Animator explosion;
+    public AudioSource audio_player;
+    public GameObject audioExplosionGameObject;
 
     void Start()
     {   
@@ -41,7 +47,7 @@ public class Enemy : MonoBehaviour
     {
         
         // Shooting automatic every time interval
-        if (wait == true)
+        if (wait == true & Player_life > 0)
         {
             shooting();
             wait = false;
@@ -50,9 +56,13 @@ public class Enemy : MonoBehaviour
         }
         
         // TODO verify if enemy wins
-        if (Player_life <= 0)
+        if (Player_life <= 0 & stopGame)
         {
+            audioExplosionGameObject.SetActive(true);
+            stopGame = false;
+            explosion.enabled = true;
             Debug.Log("Fuck! The enemy wons!");
+            StartCoroutine(waitForSound());
         }
     }
 
@@ -73,6 +83,7 @@ public class Enemy : MonoBehaviour
         if (Player_life <= 0)
         {
             Player_life = 0;
+            stopGame = true;
         }
         playerLifeDisplay.text = Player_life.ToString();
         // Sinalize by coulor
@@ -113,9 +124,31 @@ public class Enemy : MonoBehaviour
         int i = random.Next(RandomShooting.Count);
         Enemy_power = RandomShooting[i];
     }
+    
+    // ReSharper disable Unity.PerformanceAnalysis
+    private IEnumerator waitForSound()
+    {
+        audio_1.Stop();
+        audio_player.Play();
+        //Wait Until Sound has finished playing
+        while (audio_player.isPlaying)
+        {
+            yield return null;
+        }
+        // Wait 1 sec before change 
+        StartCoroutine(FinishGame());
+    }
+    
+    private IEnumerator FinishGame()
+    {
+        yield return new WaitForSeconds(2f); // wait
+        
+        // Change scene
+        SceneManager.LoadScene("emergency");
+    }
 
 
-    // TODO Read the TXT File
+    // Read the file with player life information
     private void call_and_read_life()
     {
         int cont = 0;

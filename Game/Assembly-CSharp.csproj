@@ -107,6 +107,7 @@
      <Compile Include="Assets\2D Space Kit\Scripts\CustomPointer.cs" />
      <Compile Include="Assets\TextMesh Pro\Examples &amp; Extras\Scripts\Benchmark01.cs" />
      <Compile Include="Assets\TextMesh Pro\Examples &amp; Extras\Scripts\TMP_TextEventCheck.cs" />
+     <Compile Include="Assets\Scripts\Emergency.cs" />
      <None Include="Assets\TextMesh Pro\Shaders\TMPro.cginc" />
      <None Include="Assets\2D Space Kit\Backgrounds\Background Tip.txt" />
      <None Include="Assets\TextMesh Pro\Shaders\TMP_SDF-Mobile Overlay.shader" />
@@ -801,6 +802,9 @@
  </Reference>
  <Reference Include="Unity.2D.SpriteShape.Runtime">
  <HintPath>C:/Users/serra/OneDrive/Documentos/WiP/Frisia/Burschenkneipe/Game/Library/ScriptAssemblies/Unity.2D.SpriteShape.Runtime.dll</HintPath>
+ </Reference>
+ <Reference Include="com.unity.quicksearch">
+ <HintPath>C:/Users/serra/OneDrive/Documentos/WiP/Frisia/Burschenkneipe/Game/Library/ScriptAssemblies/com.unity.quicksearch.dll</HintPath>
  </Reference>
   </ItemGroup>
   <ItemGroup>

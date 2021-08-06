@@ -17,4 +17,10 @@ EditorBuildSettings:
   - enabled: 1
     path: Assets/Scenes/Won.unity
     guid: 75c3264f9eab8aa4ca08d73b1642b650
+  - enabled: 1
+    path: Assets/Scenes/emergency.unity
+    guid: aeb57184e946536489c640b2d8f6fc89
+  - enabled: 1
+    path: Assets/Scenes/lose.unity
+    guid: 4d2143a58055ae246918a3cdf2bc5ce8
   m_configObjects: {}

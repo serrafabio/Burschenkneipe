@@ -16,6 +16,7 @@ public class Countdown : MonoBehaviour
     public ParticleSystem psys_3;
     public AudioSource audio;
     public GameObject explosion;
+    public GameObject explosion_player;
 
     private void Start()
     {
@@ -26,6 +27,7 @@ public class Countdown : MonoBehaviour
         Missil_2.SetActive(false);
         Missil_3.SetActive(false);
         explosion.SetActive(false);
+        explosion_player.SetActive(false);
         psys_1.Stop();
         psys_2.Stop();
         psys_3.Stop();
