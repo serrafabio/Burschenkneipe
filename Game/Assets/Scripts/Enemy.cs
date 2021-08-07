@@ -21,7 +21,7 @@ public class Enemy : MonoBehaviour
     private Boolean stopGame = false;
     private int intactPlayerLife;
     // globals
-    private string path = Directory.GetCurrentDirectory() ;
+    private string path = "C:\\Users\\serra\\OneDrive\\Documentos\\WiP\\Frisia\\Burschenkneipe\\Game\\Assets\\Scripts";
     // Player life text
     public Text playerLifeDisplay;
     // List
@@ -167,7 +167,7 @@ public class Enemy : MonoBehaviour
     private void call_and_read_life()
     {
         int cont = 0;
-        var lines = File.ReadAllLines(path + "\\Assets\\Scripts\\"+ "globals.txt")
+        var lines = File.ReadAllLines(path + "\\globals.txt")
             .Select(x => x.Split(new[] {'[', ']'}, StringSplitOptions.RemoveEmptyEntries));
         foreach (var pair in lines)
         {
@@ -181,7 +181,6 @@ public class Enemy : MonoBehaviour
         }
     }
     
-    // TODO Write in TXT File if the enemy is destroyed
     
     
 }

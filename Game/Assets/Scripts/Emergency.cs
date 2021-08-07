@@ -1,44 +1,80 @@
 using System;
 using System.Collections;
 using System.Collections.Generic;
+using System.IO;
+using System.Linq;
+using System.Timers;
 using UnityEngine;
 using UnityEngine.SceneManagement;
+using UnityEngine.UI;
 
 public class Emergency : MonoBehaviour
 {
     // public variables
-    public int countdownTime;
+    private float countdownTime;
+    private float fixCountDownTime;
     public AudioSource alarm;
-    
-    private void Start()
+    public Animator alert;
+    public Text counter;
+    private string path = "C:\\Users\\serra\\OneDrive\\Documentos\\WiP\\Frisia\\Burschenkneipe\\Game\\Assets\\Scripts";
+
+    void Start()
     {
         alarm.loop = true;
+        call_and_read_timer();
         alarm.Play();
-        //StartCoroutine(CountdownToStart());
+        alert.speed = 0.92f;
     }
-    
-    /*
-     If the timer is wished
-    private IEnumerator CountdownToStart()
+
+    void Update()
     {
-        alarm.Play();
-        while (countdownTime>0)
+        // set timer
+        if (countdownTime > 0)
         {
-            yield return new WaitForSeconds(1f);
-            countdownTime--; 
+            countdownTime -= Time.deltaTime;
         }
-
-        yield return new WaitForSeconds(1f);
-        alarm.Stop();
-    }
-    */
-
-    private void Update()
-    {
+        else
+        {
+            countdownTime = fixCountDownTime;
+        }
+        DisplayTime(countdownTime);
+        // exit
         if (Input.GetKeyDown(KeyCode.Space))
         {
             alarm.Stop();   
-            SceneManager.LoadScene("lose");
+            SceneManager.LoadScene("menu");
         }
     }
+    
+    private void call_and_read_timer()
+    {
+        int cont = 0;
+        var lines = File.ReadAllLines(path +"\\globals.txt")
+            .Select(x => x.Split(new[] {'[', ']'}, StringSplitOptions.RemoveEmptyEntries));
+        foreach (var pair in lines)
+        {
+            if (cont == 3)
+            {
+                countdownTime = float.Parse(pair.First());
+                fixCountDownTime = countdownTime;
+            }
+            cont += 1;
+            
+        }
+    }
+
+    private void DisplayTime(float timeToDisplay)
+    {
+        if (timeToDisplay < 0)
+        {
+            timeToDisplay = 0;
+        }
+
+        float minutes = Mathf.FloorToInt(timeToDisplay / 60);
+        float seconds = Mathf.FloorToInt(timeToDisplay % 60);
+
+        counter.text = string.Format("{0:00}:{1:00}", minutes, seconds);
+
+    }
+    
 }

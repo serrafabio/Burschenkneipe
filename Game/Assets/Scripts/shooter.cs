@@ -17,6 +17,12 @@ public class shooter : MonoBehaviour
     public GameObject bulet_left;
     public Transform start_left;
     public ParticleSystem partsSys_left;
+    public AudioSource audio_2;
+    // Ultra Attack
+    public GameObject ultraAttack;
+    public Transform startUltraAttack;
+    public ParticleSystem partsSysUltraAttack;
+    private int UltraAttackPower;
     // direction parm
     private Boolean dir;
     private Boolean dir_2;
@@ -26,7 +32,7 @@ public class shooter : MonoBehaviour
     private int Player_power;
     private int intactEnemyLife;
     // globals
-    private string path = Directory.GetCurrentDirectory();
+    private string path = "C:\\Users\\serra\\OneDrive\\Documentos\\WiP\\Frisia\\Burschenkneipe\\Game\\Assets\\Scripts";
     // Enemy life text
     public Text enemyLifeDisplay;
     // Explosion
@@ -56,6 +62,10 @@ public class shooter : MonoBehaviour
         if (Input.GetKeyDown(KeyCode.Space) & Enemy_life > 0)
         {
             shooting();
+        }
+        else if (Input.GetKeyDown(KeyCode.A) & Enemy_life > 0)
+        {
+            shootingUltraAttack();
         }
         // TODO verify if player wins
         if (Enemy_life <= 0 & stopGame)
@@ -100,6 +110,32 @@ public class shooter : MonoBehaviour
 
         // Each shoot must hurt the enemy
         Enemy_life -= Player_power;
+        
+        // call continuation
+        HurtEnemyPoints();
+    }
+    
+    private void shootingUltraAttack()
+    {
+        // Play sound
+        audio_2.Play();
+        // init shoot
+        GameObject shoot = Instantiate(ultraAttack, startUltraAttack.transform.position, startUltraAttack.transform.rotation);
+        shoot.SetActive(true);
+        Destroy(shoot, 0.80f);
+        // activate particle systems
+        partsSysUltraAttack.Play();
+
+        // Each shoot must hurt the enemy
+        Enemy_life -= UltraAttackPower ;
+        
+        // call continuation
+        HurtEnemyPoints();
+        
+    }
+
+    private void HurtEnemyPoints()
+    {
         if (Enemy_life <= 0)
         {
             Enemy_life = 0;
@@ -122,8 +158,8 @@ public class shooter : MonoBehaviour
         {
             enemyLifeDisplay.color = Color.red;
         }
+        
         // set label
-
         StartCoroutine(setLabel());
     }
 
@@ -178,7 +214,7 @@ public class shooter : MonoBehaviour
     private void call_and_read_life()
     {
         int cont = 0;
-        var lines = File.ReadAllLines(path + "\\Assets\\Scripts\\"+ "globals.txt")
+        var lines = File.ReadAllLines(path + "\\globals.txt")
             .Select(x => x.Split(new[] {'[', ']'}, StringSplitOptions.RemoveEmptyEntries));
         foreach (var pair in lines)
         {
@@ -190,6 +226,10 @@ public class shooter : MonoBehaviour
             else if (cont == 2)
             {
                 Player_power = Int16.Parse(pair.First());
+            }
+            else if (cont == 4)
+            {
+                UltraAttackPower = Int16.Parse(pair.First());
             }
             cont += 1;
         }
