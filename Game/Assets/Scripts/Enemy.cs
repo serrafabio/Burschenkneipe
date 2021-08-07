@@ -31,6 +31,8 @@ public class Enemy : MonoBehaviour
     public Animator explosion;
     public AudioSource audio_player;
     public GameObject audioExplosionGameObject;
+    // Labels
+    public Text playerHurtPoints;
 
     void Start()
     {   
@@ -99,6 +101,8 @@ public class Enemy : MonoBehaviour
         {
             playerLifeDisplay.color = Color.red;
         }
+        // set label
+        StartCoroutine(setLabel());
     }
 
     private IEnumerator MyEvent()
@@ -145,6 +149,17 @@ public class Enemy : MonoBehaviour
         
         // Change scene
         SceneManager.LoadScene("emergency");
+    }
+    
+    private IEnumerator setLabel()
+    {
+        yield return new WaitForSeconds(0.6f); // wait to show
+        
+        playerHurtPoints.enabled = true;
+        playerHurtPoints.text = "-" + Enemy_power.ToString();
+        
+        yield return new WaitForSeconds(0.3f); // wait
+        playerHurtPoints.enabled = false;
     }
 
 

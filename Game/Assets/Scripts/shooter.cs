@@ -19,6 +19,7 @@ public class shooter : MonoBehaviour
     public ParticleSystem partsSys_left;
     // direction parm
     private Boolean dir;
+    private Boolean dir_2;
     private Boolean stopGame = false;
     // Life and shoot
     private int Enemy_life;
@@ -33,6 +34,10 @@ public class shooter : MonoBehaviour
     public GameObject enemy;
     public AudioSource audio_explosion;
     public GameObject audioExplosionGameObject;
+    // Label
+    public Text enemyHurtPoints_1;
+    public Text enemyHurtPoints_2;
+    // Special Attack
     
     void Start()
     {   
@@ -42,6 +47,7 @@ public class shooter : MonoBehaviour
         explosion.enabled = false;
         enemyLifeDisplay.color = Color.green;
         dir = true; // initialize with right
+        dir_2 = true; // initialize with right
     }
     
    // Update is called once per frame
@@ -67,7 +73,7 @@ public class shooter : MonoBehaviour
     {
         // Play sound
         audio_1.Play();
-        // right side
+        // right side (true)
         if (dir == true)
         {
             // init shoot
@@ -79,7 +85,7 @@ public class shooter : MonoBehaviour
             // change side
             dir = false;
         }
-        // left side
+        // left side (false)
         else
         {
             // init shoot
@@ -91,6 +97,7 @@ public class shooter : MonoBehaviour
             // change side
             dir = true;
         }
+
         // Each shoot must hurt the enemy
         Enemy_life -= Player_power;
         if (Enemy_life <= 0)
@@ -115,6 +122,9 @@ public class shooter : MonoBehaviour
         {
             enemyLifeDisplay.color = Color.red;
         }
+        // set label
+
+        StartCoroutine(setLabel());
     }
 
     private IEnumerator waitForSound()
@@ -130,11 +140,38 @@ public class shooter : MonoBehaviour
         StartCoroutine(MyEvent());
     }
     
+    private IEnumerator setLabel()
+    {
+        yield return new WaitForSeconds(0.6f); // wait to show
+        if (dir_2)
+        {
+            enemyHurtPoints_1.enabled = true;
+            enemyHurtPoints_1.text = "-" + Player_power.ToString();
+
+        }
+        else
+        {
+            enemyHurtPoints_2.enabled = true;
+            enemyHurtPoints_2.text = "-" + Player_power.ToString();
+        }
+        yield return new WaitForSeconds(0.3f); // wait
+        if (dir_2)
+        {
+            enemyHurtPoints_1.enabled = false;
+            dir_2 = false;
+        }
+        else
+        {
+            enemyHurtPoints_2.enabled = false;
+            dir_2 = true;
+        }
+    }
+    
+    
     private IEnumerator MyEvent()
     {
         yield return new WaitForSeconds(2f); // wait
         // Change scene
-        
         SceneManager.LoadScene("Won");
     }
     

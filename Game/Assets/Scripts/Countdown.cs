@@ -17,6 +17,9 @@ public class Countdown : MonoBehaviour
     public AudioSource audio;
     public GameObject explosion;
     public GameObject explosion_player;
+    public Text enemyHurtPoints;
+    public Text enemyHurtPoints_2;
+    public Text playerHurtPoints;
 
     private void Start()
     {
@@ -31,6 +34,9 @@ public class Countdown : MonoBehaviour
         psys_1.Stop();
         psys_2.Stop();
         psys_3.Stop();
+        enemyHurtPoints.enabled = false;
+        playerHurtPoints.enabled = false;
+        enemyHurtPoints_2.enabled = false;
         StartCoroutine(CountdownToStart());
     }
 
