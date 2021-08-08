@@ -5,7 +5,7 @@ using UnityEngine.SceneManagement;
 
 public class Menu_Controller : MonoBehaviour
 {
-    private Boolean isMuted = false;
+    private bool isMuted = false;
     
     public void LoadScene(string sceneName)
     {

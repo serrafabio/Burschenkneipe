@@ -17,8 +17,8 @@ public class Enemy : MonoBehaviour
     // parms of life and power of the missil
     private int Enemy_power = 5;
     private int Player_life;
-    private Boolean wait = true;
-    private Boolean stopGame = false;
+    private bool wait = true;
+    private bool stopGame = false;
     private int intactPlayerLife;
     // globals
     private string path = "C:\\Users\\serra\\OneDrive\\Documentos\\WiP\\Frisia\\Burschenkneipe\\Game\\Assets\\Scripts";

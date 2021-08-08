@@ -3,3 +3,4 @@
 [5]  shoot_ship 2
 [300]  time_alarm_saufen 3
 [50]  ultraAttack_ship 4
+[Com3] arduinoPort 5

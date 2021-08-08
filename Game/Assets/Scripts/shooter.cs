@@ -5,6 +5,9 @@ using UnityEngine;
 using UnityEngine.UI;
 using UnityEngine.SceneManagement;
 using System.Collections;
+using System.Collections.Generic;
+using System.Threading;
+using System.IO.Ports;
 
 public class shooter : MonoBehaviour
 {
@@ -24,9 +27,9 @@ public class shooter : MonoBehaviour
     public ParticleSystem partsSysUltraAttack;
     private int UltraAttackPower;
     // direction parm
-    private Boolean dir;
-    private Boolean dir_2;
-    private Boolean stopGame = false;
+    private bool dir;
+    private bool dir_2;
+    private bool stopGame = false;
     // Life and shoot
     private int Enemy_life;
     private int Player_power;
@@ -43,7 +46,16 @@ public class shooter : MonoBehaviour
     // Label
     public Text enemyHurtPoints_1;
     public Text enemyHurtPoints_2;
-    // Special Attack
+    // Arduino 
+    private bool isConnected = false;
+    private bool ShootViaArduino = false;
+    private string portName = "COM3";
+    private int baudRate = 9600;
+    private int reconnectionDelay = 1;
+    private string SERIAL_DEVICE_CONNECTED = "__Connected__";
+    private const string SERIAL_DEVICE_DISCONNECTED = "__Disconnected__";
+    private SerialPort _serialPort;
+    private int countArduinoDisconnect = 0;
     
     void Start()
     {   
@@ -54,20 +66,47 @@ public class shooter : MonoBehaviour
         enemyLifeDisplay.color = Color.green;
         dir = true; // initialize with right
         dir_2 = true; // initialize with right
+        
+        // Initialize the data from Serial Port
+        ConnectToArduino();
     }
     
    // Update is called once per frame
     void Update()
     {
-        if (Input.GetKeyDown(KeyCode.Space) & Enemy_life > 0)
+        // Verifying connection via Arduion
+        if (!isConnected)
+        {
+            countArduinoDisconnect++;
+            if (countArduinoDisconnect >= 50)
+            {
+                countArduinoDisconnect = 0;
+                ConnectToArduino();
+            }
+        }
+        // receive info from Arduino
+        try
+        {
+            receiveDataSerialPort();
+        }
+        catch (Exception ex)
+        {
+            
+            Debug.Log("Nothing capture");
+            throw ex;
+        }
+        
+        // shooting
+        if ((Input.GetKeyDown(KeyCode.Space) | ShootViaArduino) & Enemy_life > 0 )
         {
             shooting();
+            ShootViaArduino = false;
         }
         else if (Input.GetKeyDown(KeyCode.A) & Enemy_life > 0)
         {
             shootingUltraAttack();
         }
-        // TODO verify if player wins
+        // verify if player wins
         if (Enemy_life <= 0 & stopGame)
         {
             audioExplosionGameObject.SetActive(true);
@@ -231,9 +270,47 @@ public class shooter : MonoBehaviour
             {
                 UltraAttackPower = Int16.Parse(pair.First());
             }
+            else if (cont == 5)
+            {
+                portName = pair.First().ToString();
+            }
             cont += 1;
         }
         
+    }
+    
+    // Connect to arduino
+    private void ConnectToArduino()
+    {
+        try
+        {
+            _serialPort = new SerialPort();
+            _serialPort.PortName = "COM3";
+            _serialPort.BaudRate = baudRate;
+            _serialPort.Open();
+            _serialPort.ReadTimeout = reconnectionDelay;
+            isConnected = true;
+            Debug.Log(SERIAL_DEVICE_CONNECTED);
+        }
+        catch (Exception ex)
+        {
+           isConnected = false;
+            Debug.Log(SERIAL_DEVICE_DISCONNECTED);
+            throw ex;
+        }
+    }
+
+    private void receiveDataSerialPort()
+    {
+        if (isConnected)
+        {
+            string received = _serialPort.ReadExisting();
+            Debug.Log(received);
+            if (received.Contains("s\n"))
+            {
+                ShootViaArduino = true;
+            }
+        }
     }
     
 }
