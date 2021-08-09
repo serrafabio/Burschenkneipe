@@ -17,6 +17,7 @@ public class Emergency : MonoBehaviour
     public Animator alert;
     public Text counter;
     private string path = "C:\\Users\\serra\\OneDrive\\Documentos\\WiP\\Frisia\\Burschenkneipe\\Game\\Assets\\Scripts";
+    public string SceneName;
 
     void Start()
     {
@@ -42,7 +43,7 @@ public class Emergency : MonoBehaviour
         if (Input.GetKeyDown(KeyCode.Space))
         {
             alarm.Stop();   
-            SceneManager.LoadScene("menu");
+            SceneManager.LoadScene(SceneName);
         }
     }
     

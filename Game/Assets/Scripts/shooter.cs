@@ -56,6 +56,8 @@ public class shooter : MonoBehaviour
     private const string SERIAL_DEVICE_DISCONNECTED = "__Disconnected__";
     private SerialPort _serialPort;
     private int countArduinoDisconnect = 0;
+    // Change scene
+    public string SceneName;
     
     void Start()
     {   
@@ -85,16 +87,20 @@ public class shooter : MonoBehaviour
             }
         }
         // receive info from Arduino
-        try
+        else
         {
-            receiveDataSerialPort();
-        }
-        catch (Exception ex)
-        {
+            try
+            {
+                receiveDataSerialPort();
+            }
+            catch (Exception ex)
+            {
             
-            Debug.Log("Nothing capture");
-            throw ex;
+                Debug.Log("Nothing capture");
+                throw ex;
+            }  
         }
+        
         
         // shooting
         if ((Input.GetKeyDown(KeyCode.Space) | ShootViaArduino) & Enemy_life > 0 )
@@ -247,7 +253,7 @@ public class shooter : MonoBehaviour
     {
         yield return new WaitForSeconds(2f); // wait
         // Change scene
-        SceneManager.LoadScene("Won");
+        SceneManager.LoadScene(SceneName);
     }
     
     private void call_and_read_life()
@@ -285,7 +291,7 @@ public class shooter : MonoBehaviour
         try
         {
             _serialPort = new SerialPort();
-            _serialPort.PortName = "COM3";
+            _serialPort.PortName = portName;
             _serialPort.BaudRate = baudRate;
             _serialPort.Open();
             _serialPort.ReadTimeout = reconnectionDelay;
@@ -305,8 +311,7 @@ public class shooter : MonoBehaviour
         if (isConnected)
         {
             string received = _serialPort.ReadExisting();
-            Debug.Log(received);
-            if (received.Contains("s\n"))
+            if (received.Contains("s"))
             {
                 ShootViaArduino = true;
             }

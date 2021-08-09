@@ -22,6 +22,7 @@ public class Countdown : MonoBehaviour
     public Text enemyHurtPoints_2;
     public Text playerHurtPoints;
     public GameObject ultraAttack;
+    public GameObject planet;
 
     private void Start()
     {
@@ -34,6 +35,7 @@ public class Countdown : MonoBehaviour
         explosion.SetActive(false);
         explosion_player.SetActive(false);
         ultraAttack.SetActive(false);
+        planet.SetActive(false);
         psys_4.Stop();
         psys_1.Stop();
         psys_2.Stop();
@@ -63,5 +65,6 @@ public class Countdown : MonoBehaviour
         Enemy.SetActive(true);
         Player.SetActive(true);
         audio.Play();
+        planet.SetActive(true);
     }
 }

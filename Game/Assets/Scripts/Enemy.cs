@@ -33,7 +33,10 @@ public class Enemy : MonoBehaviour
     public GameObject audioExplosionGameObject;
     // Labels
     public Text playerHurtPoints;
-
+    // Change Scene
+    public string SceneName;
+    
+    
     void Start()
     {   
         // right side
@@ -148,7 +151,7 @@ public class Enemy : MonoBehaviour
         yield return new WaitForSeconds(2f); // wait
         
         // Change scene
-        SceneManager.LoadScene("emergency");
+        SceneManager.LoadScene(SceneName);
     }
     
     private IEnumerator setLabel()

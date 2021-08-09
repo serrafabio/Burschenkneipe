@@ -12,15 +12,39 @@ EditorBuildSettings:
     path: Assets/Scenes/menu.unity
     guid: ac25737d5f8701f4eb6c14b2746a8ef5
   - enabled: 1
-    path: Assets/Scenes/phase 1.unity
+    path: Assets/Scenes/phase 1/phase 1.unity
     guid: 8c4d11117d2f7bd48aed690675f2c529
-  - enabled: 1
-    path: Assets/Scenes/Won.unity
-    guid: 75c3264f9eab8aa4ca08d73b1642b650
-  - enabled: 1
-    path: Assets/Scenes/emergency.unity
-    guid: aeb57184e946536489c640b2d8f6fc89
   - enabled: 1
     path: Assets/Scenes/intro_video.unity
     guid: 50372fcdd651639469ad824cbbb513ab
+  - enabled: 1
+    path: Assets/Scenes/Pause.unity
+    guid: 4dd995a813c00044e94c444d90e81717
+  - enabled: 1
+    path: Assets/Scenes/phase 1/Between_1.unity
+    guid: b54985a41dbb63943a9d8ad9d1df27fb
+  - enabled: 1
+    path: Assets/Scenes/phase 1/Instructions.unity
+    guid: b9ab4d5f67a86a147aacd36be6e374f5
+  - enabled: 1
+    path: Assets/Scenes/phase 1/intro_Mars_Ships.unity
+    guid: 3c5ae030bc0b821458045d88d84fc04e
+  - enabled: 1
+    path: Assets/Scenes/phase 1/Explanation_Martians.unity
+    guid: 8e9846ebc91ac474ba7242e458344bee
+  - enabled: 1
+    path: Assets/Scenes/phase 1/First_contact.unity
+    guid: 1c9d396870c897c428869189a8593349
+  - enabled: 1
+    path: Assets/Scenes/phase 1/Between_2.unity
+    guid: aa3a99b5cb18d7643a2ef019fc29c911
+  - enabled: 1
+    path: Assets/Scenes/phase 1/Won_1.unity
+    guid: 98863960112fb3649b06bfc6e48145e0
+  - enabled: 1
+    path: Assets/Scenes/phase 1/emergency_1.unity
+    guid: aa3677392ec9f00478eec70a6341d5d6
+  - enabled: 1
+    path: Assets/Scenes/phase 1/Imperial March.unity
+    guid: c2e875e4e7454f5458ef4ddf5c8db514
   m_configObjects: {}
