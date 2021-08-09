@@ -3,6 +3,7 @@ using System.Collections;
 using System.Collections.Generic;
 using System.IO;
 using System.Linq;
+using System.Security.Cryptography.X509Certificates;
 using UnityEngine;
 using UnityEngine.UI;
 using UnityEngine.SceneManagement;
@@ -20,6 +21,8 @@ public class Enemy : MonoBehaviour
     private bool wait = true;
     private bool stopGame = false;
     private int intactPlayerLife;
+    // cheater for last phase
+    public int Cheater = 1;
     // globals
     private string path = "C:\\Users\\serra\\OneDrive\\Documentos\\WiP\\Frisia\\Burschenkneipe\\Game\\Assets\\Scripts";
     // Player life text
@@ -35,15 +38,15 @@ public class Enemy : MonoBehaviour
     public Text playerHurtPoints;
     // Change Scene
     public string SceneName;
-    
-    
+
+
     void Start()
     {   
         // right side
         call_and_read_life();
         playerLifeDisplay.text = Player_life.ToString();
         playerLifeDisplay.color = Color.green;
-        StartCoroutine(MyEvent());
+        StartCoroutine(RandomEnemyPower());
         
     }
     
@@ -56,7 +59,7 @@ public class Enemy : MonoBehaviour
         {
             shooting();
             wait = false;
-            StartCoroutine(MyEvent());
+            StartCoroutine(RandomEnemyPower());
 
         }
         
@@ -108,7 +111,7 @@ public class Enemy : MonoBehaviour
         StartCoroutine(setLabel());
     }
 
-    private IEnumerator MyEvent()
+    private IEnumerator RandomEnemyPower()
     {
         var random = new System.Random();
         int time_index = random.Next(RandomTime.Count);
@@ -129,7 +132,7 @@ public class Enemy : MonoBehaviour
             RandomShooting = new List<int>{8, 9, 10};
         }
         int i = random.Next(RandomShooting.Count);
-        Enemy_power = RandomShooting[i];
+        Enemy_power = Cheater*RandomShooting[i];
     }
     
     // ReSharper disable Unity.PerformanceAnalysis

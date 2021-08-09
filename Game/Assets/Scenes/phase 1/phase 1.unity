@@ -4992,7 +4992,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 977954602}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -11.643513, y: -3.2405872, z: 0}
+  m_LocalPosition: {x: -14.76, y: 14.15, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 0}
@@ -5245,7 +5245,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1051626962}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: -11.68, y: -4, z: 3158.566}
+  m_LocalPosition: {x: -5.2, y: 11.8, z: 3158.566}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 1584068848}
@@ -5707,7 +5707,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1190840652}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: -8.440001, y: 0.7400007, z: 3158.566}
+  m_LocalPosition: {x: 16.1, y: 13.1, z: 3158.566}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 1584068848}
@@ -7868,7 +7868,7 @@ GameObject:
   - component: {fileID: 1795722487}
   - component: {fileID: 1795722486}
   m_Layer: 0
-  m_Name: SCIEnrg_Shield Activate Deactivate_02
+  m_Name: specialAttack
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -7884,7 +7884,7 @@ AudioSource:
   m_Enabled: 1
   serializedVersion: 4
   OutputAudioMixerGroup: {fileID: 0}
-  m_audioClip: {fileID: 8300000, guid: b3f498961b9bd47e29973abf7e1bce2a, type: 3}
+  m_audioClip: {fileID: 8300000, guid: 850fdee8a786c7b4a9678238d5f6e9cf, type: 3}
   m_PlayOnAwake: 0
   m_Volume: 1
   m_Pitch: 1

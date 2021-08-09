@@ -58,6 +58,7 @@ public class shooter : MonoBehaviour
     private int countArduinoDisconnect = 0;
     // Change scene
     public string SceneName;
+    private bool ultraAttackActive = false;
     
     void Start()
     {   
@@ -105,11 +106,15 @@ public class shooter : MonoBehaviour
         // shooting
         if ((Input.GetKeyDown(KeyCode.Space) | ShootViaArduino) & Enemy_life > 0 )
         {
+            // Not Ultra Attack
+            ultraAttackActive = false;
             shooting();
             ShootViaArduino = false;
         }
         else if (Input.GetKeyDown(KeyCode.A) & Enemy_life > 0)
         {
+            // Ultra Attack
+            ultraAttackActive = true;
             shootingUltraAttack();
         }
         // verify if player wins
@@ -155,7 +160,7 @@ public class shooter : MonoBehaviour
 
         // Each shoot must hurt the enemy
         Enemy_life -= Player_power;
-        
+
         // call continuation
         HurtEnemyPoints();
     }
@@ -207,19 +212,6 @@ public class shooter : MonoBehaviour
         // set label
         StartCoroutine(setLabel());
     }
-
-    private IEnumerator waitForSound()
-    {
-        audio_1.Stop();
-        audio_explosion.Play();
-        //Wait Until Sound has finished playing
-        while (audio_explosion.isPlaying)
-        {
-            yield return null;
-        }
-        // Wait 1 sec before change 
-        StartCoroutine(MyEvent());
-    }
     
     private IEnumerator setLabel()
     {
@@ -227,13 +219,29 @@ public class shooter : MonoBehaviour
         if (dir_2)
         {
             enemyHurtPoints_1.enabled = true;
-            enemyHurtPoints_1.text = "-" + Player_power.ToString();
+            if (ultraAttackActive)
+            {
+                enemyHurtPoints_1.text = "-" + UltraAttackPower.ToString();
+            }
+            else
+            {
+                enemyHurtPoints_1.text = "-" + Player_power.ToString();
+            }
+            
 
         }
         else
         {
             enemyHurtPoints_2.enabled = true;
-            enemyHurtPoints_2.text = "-" + Player_power.ToString();
+            if (ultraAttackActive)
+            {
+                enemyHurtPoints_2.text = "-" + UltraAttackPower.ToString();
+            }
+            else
+            {
+                enemyHurtPoints_2.text = "-" + Player_power.ToString();
+            }
+            
         }
         yield return new WaitForSeconds(0.3f); // wait
         if (dir_2)
@@ -247,8 +255,21 @@ public class shooter : MonoBehaviour
             dir_2 = true;
         }
     }
-    
-    
+
+    private IEnumerator waitForSound()
+    {
+        audio_1.Stop();
+        audio_explosion.Play();
+        //Wait Until Sound has finished playing
+        while (audio_explosion.isPlaying)
+        {
+            yield return null;
+        }
+        // Wait 1 sec before change 
+        StartCoroutine(MyEvent());
+    }
+
+
     private IEnumerator MyEvent()
     {
         yield return new WaitForSeconds(2f); // wait

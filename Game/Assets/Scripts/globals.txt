@@ -1,5 +1,5 @@
-[100] life_ship 0
-[200] life_enemy 1
+[500] life_ship 0
+[800] life_enemy 1
 [5]  shoot_ship 2
 [300]  time_alarm_saufen 3
 [50]  ultraAttack_ship 4

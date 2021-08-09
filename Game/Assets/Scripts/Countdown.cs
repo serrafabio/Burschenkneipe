@@ -44,6 +44,8 @@ public class Countdown : MonoBehaviour
         playerHurtPoints.enabled = false;
         enemyHurtPoints_2.enabled = false;
         StartCoroutine(CountdownToStart());
+        // start audio
+        audio.Play();
     }
 
     IEnumerator CountdownToStart()
@@ -64,7 +66,6 @@ public class Countdown : MonoBehaviour
         
         Enemy.SetActive(true);
         Player.SetActive(true);
-        audio.Play();
         planet.SetActive(true);
     }
 }

@@ -47,4 +47,106 @@ EditorBuildSettings:
   - enabled: 1
     path: Assets/Scenes/phase 1/Imperial March.unity
     guid: c2e875e4e7454f5458ef4ddf5c8db514
+  - enabled: 1
+    path: Assets/Scenes/phase 1/final_1.unity
+    guid: dcb6b38fbb019954aa5f966f8cc66894
+  - enabled: 1
+    path: Assets/Scenes/phase 1/final_positiv_1.unity
+    guid: c8d9aa44f3006224796b4f304e6a76dd
+  - enabled: 1
+    path: Assets/Scenes/phase 2/Between_2_1.unity
+    guid: 24b8aeffb411a5c4aaa960e37152a8f4
+  - enabled: 1
+    path: Assets/Scenes/phase 2/NichtDerPflichtNurZuGenuegen.unity
+    guid: 9afea6bdf8746484eb1c1bace4ffe542
+  - enabled: 1
+    path: Assets/Scenes/phase 2/emergency_2.unity
+    guid: 8d13d6c907773ff4eb2cbfef6bfa145d
+  - enabled: 1
+    path: Assets/Scenes/phase 2/final_negativ_2.unity
+    guid: c8bfecd403763294bacfcb5e43d955f3
+  - enabled: 1
+    path: Assets/Scenes/phase 2/final_positiv_2.unity
+    guid: fce4dc7d4ca9299429efae56f4714f60
+  - enabled: 1
+    path: Assets/Scenes/phase 2/phase 2.unity
+    guid: 5fdc78856fc200d4bab1eeed71019ace
+  - enabled: 1
+    path: Assets/Scenes/phase 2/undecover.unity
+    guid: a923886e1dd07bc48a0bfe3110ddf902
+  - enabled: 1
+    path: Assets/Scenes/phase 2/Won_2.unity
+    guid: e6a7d844a30c0f94e80b7abe1e115491
+  - enabled: 1
+    path: Assets/Scenes/phase 3/Between_3_1.unity
+    guid: c7c6bf65dc6b4a347b949dcf62463e5c
+  - enabled: 1
+    path: Assets/Scenes/phase 3/Botschaft_Invasion.unity
+    guid: c8dd7ffda0f6b2a43ad720b48442615f
+  - enabled: 1
+    path: Assets/Scenes/phase 3/emergency_3.unity
+    guid: fb834fdf6b2e97347812bb496ceb310e
+  - enabled: 1
+    path: Assets/Scenes/phase 3/final_negativ_3.unity
+    guid: 5c20148577e0bf045b74f0f4ef03d73b
+  - enabled: 1
+    path: Assets/Scenes/phase 3/final_positiv_3.unity
+    guid: c73afdf6a39a86341b14df4ef7fe99be
+  - enabled: 1
+    path: Assets/Scenes/phase 3/DieGedankenSindFrei.unity
+    guid: 106ab6a9e64e3ad438bbbaf249d1a7fc
+  - enabled: 1
+    path: Assets/Scenes/phase 3/phase 3.unity
+    guid: daf1dc44b87a740418a0077ba8d96eb8
+  - enabled: 1
+    path: Assets/Scenes/phase 3/Won_3.unity
+    guid: 41668ee3bce16334d97c34b00756672e
+  - enabled: 1
+    path: Assets/Scenes/phase 5/Between_5_1.unity
+    guid: 3a3fe7369b7871947bebdb71b8ac121d
+  - enabled: 1
+    path: Assets/Scenes/phase 5/Dr_Saufproblem.unity
+    guid: 0ad724eda2e13af4f9d71489d94914ae
+  - enabled: 1
+    path: Assets/Scenes/phase 5/emergency_5.unity
+    guid: 9deb4b81d70d0f24fae45be8868b65cc
+  - enabled: 1
+    path: Assets/Scenes/phase 5/final_5.unity
+    guid: 3730ce31d8bdb18429aeab9ba85e7278
+  - enabled: 1
+    path: Assets/Scenes/phase 5/final_positiv_5.unity
+    guid: eeeee8c7c21ecd04189c087e1bb8cb4c
+  - enabled: 1
+    path: Assets/Scenes/phase 5/JamesBond.unity
+    guid: eebebb137ae68064f9e33359db5ef12b
+  - enabled: 1
+    path: Assets/Scenes/phase 5/phase 5.unity
+    guid: 9b41f700f67d2164c93edb9264255146
+  - enabled: 1
+    path: Assets/Scenes/phase 5/Won_5.unity
+    guid: bf89fd91efc00cf4cbc93f65ee118784
+  - enabled: 1
+    path: Assets/Scenes/phase 4/Between_4_1.unity
+    guid: f401830234f47cd4189f4db908298da9
+  - enabled: 1
+    path: Assets/Scenes/phase 4/emergency_4.unity
+    guid: 4c8810b29dc98084b846dba75e384610
+  - enabled: 1
+    path: Assets/Scenes/phase 4/final_negativ_4.unity
+    guid: a762fa1cb165a8d429abd32f9aa2575a
+  - enabled: 1
+    path: Assets/Scenes/phase 4/final_positiv_4.unity
+    guid: 559c2cb16fb66a746a9ef7ec6c546aa5
+  - enabled: 1
+    path: Assets/Scenes/phase 4/invasion.unity
+    guid: c0f8c3f341c6fd744897147cd314aaf0
+  - enabled: 1
+    path: Assets/Scenes/phase 4/MamaLauda.unity
+    guid: d0150193eaaa49142a54a3b8438d9ac4
+  - enabled: 1
+    path: Assets/Scenes/phase 4/phase 4.unity
+    guid: 05522f4210c59e94ca83ea976f6fc814
+  - enabled: 1
+    path: Assets/Scenes/phase 4/Won_4.unity
+    guid: c486893117249d54c9c0fceb907d7364
   m_configObjects: {}

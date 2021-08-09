@@ -48,5 +48,12 @@ public class Sings_Controller : MonoBehaviour
         {
             timeOfTheMusic = music.time;
         }
+
+        if (music.time + 0.5f > music.clip.length & !musicPlay)
+        {
+            timeOfTheMusic = 0f;
+            musicPlay = true;
+            playMusic();
+        } 
     }
 }

@@ -810,7 +810,7 @@ MonoBehaviour:
   alarm: {fileID: 454373423}
   alert: {fileID: 722733931}
   counter: {fileID: 491340260}
-  SceneName: menu
+  SceneName: final_1
 --- !u!4 &1298093480
 Transform:
   m_ObjectHideFlags: 0
