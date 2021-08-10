@@ -53,9 +53,9 @@
   </PropertyGroup>
   <ItemGroup>
      <Compile Include="Assets\Plugins\TextToTMP\Editor\TextToTMPWindow.cs" />
+     <Compile Include="Assets\Plugins\TextToTMP\Editor\Utilities.cs" />
      <Compile Include="Assets\Plugins\TextToTMP\Editor\ScriptUpgrade.cs" />
      <Compile Include="Assets\Plugins\TextToTMP\Editor\ReferenceCollection.cs" />
-     <Compile Include="Assets\Plugins\TextToTMP\Editor\Utilities.cs" />
      <Compile Include="Assets\Plugins\TextToTMP\Editor\ComponentUpgrade.cs" />
      <None Include="Assets\Plugins\TextToTMP\Editor\TextToTMP.Editor.asmdef" />
  <Reference Include="UnityEngine">
@@ -291,6 +291,9 @@
  </Reference>
  <Reference Include="log4netPlastic">
  <HintPath>C:/Users/serra/OneDrive/Documentos/WiP/Frisia/Burschenkneipe/Game/Library/PackageCache/com.unity.collab-proxy@1.5.7/Lib/Editor/PlasticSCM/log4netPlastic.dll</HintPath>
+ </Reference>
+ <Reference Include="ICSharpCode.NRefactory">
+ <HintPath>C:/Users/serra/OneDrive/Documentos/WiP/Frisia/Burschenkneipe/Game/Library/PackageCache/com.unity.render-pipelines.core@10.5.1/Editor/ShaderGenerator/ICSharpCode.NRefactory.dll</HintPath>
  </Reference>
  <Reference Include="Newtonsoft.Json">
  <HintPath>C:/Users/serra/OneDrive/Documentos/WiP/Frisia/Burschenkneipe/Game/Library/PackageCache/com.unity.nuget.newtonsoft-json@2.0.0/Runtime/Newtonsoft.Json.dll</HintPath>

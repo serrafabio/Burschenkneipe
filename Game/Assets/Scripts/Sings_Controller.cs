@@ -57,6 +57,13 @@ public class Sings_Controller : MonoBehaviour
             timeOfTheMusic = 0f;
             musicPlay = true;
             playMusic();
-        } 
+        }
     }
+    
+    public void muteMusic()
+    {
+        isMuted = !isMuted;
+        AudioListener.pause = isMuted;
+    }
+    
 }

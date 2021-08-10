@@ -23,6 +23,7 @@ public class Countdown : MonoBehaviour
     public Text playerHurtPoints;
     public GameObject ultraAttack;
     public GameObject planet;
+    public GameObject LigthUltraAttack;
 
     private void Start()
     {
@@ -43,6 +44,7 @@ public class Countdown : MonoBehaviour
         enemyHurtPoints.enabled = false;
         playerHurtPoints.enabled = false;
         enemyHurtPoints_2.enabled = false;
+        LigthUltraAttack.SetActive(false);
         StartCoroutine(CountdownToStart());
         // startEnemy audio
         audio.Play();

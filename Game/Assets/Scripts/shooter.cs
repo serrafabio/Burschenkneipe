@@ -28,6 +28,8 @@ public class shooter : MonoBehaviour
     public GameObject explosionUltraAttack;
     public Transform explosionUltraAttackStart;
     private int UltraAttackPower;
+    public GameObject LightUltraAttack;
+    public Transform _startLightUltraAttack;
     // direction parm
     private bool dir;
     private bool dir_2;
@@ -180,7 +182,11 @@ public class shooter : MonoBehaviour
         shoot.SetActive(true);
         Animator shootAnimator = shoot.GetComponent<Animator>();
         shootAnimator.enabled = true;
+        GameObject light = Instantiate(LightUltraAttack, _startLightUltraAttack.position,
+            _startLightUltraAttack.rotation);
+        light.SetActive(true);
         Destroy(shoot, 0.8f);
+        Destroy(light, 0.40f);
         yield return new WaitForSeconds(0.4f);
         // activate particle systems
         GameObject explosion = Instantiate(explosionUltraAttack, explosionUltraAttackStart.position, explosionUltraAttackStart.rotation);

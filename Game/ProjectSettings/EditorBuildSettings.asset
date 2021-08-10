@@ -17,9 +17,9 @@ EditorBuildSettings:
   - enabled: 1
     path: Assets/Scenes/intro_video.unity
     guid: 50372fcdd651639469ad824cbbb513ab
-  - enabled: 1
-    path: Assets/Scenes/Pause.unity
-    guid: 4dd995a813c00044e94c444d90e81717
+  - enabled: 0
+    path: 
+    guid: 00000000000000000000000000000000
   - enabled: 1
     path: Assets/Scenes/phase 1/Between_1.unity
     guid: b54985a41dbb63943a9d8ad9d1df27fb
@@ -50,9 +50,9 @@ EditorBuildSettings:
   - enabled: 1
     path: Assets/Scenes/phase 1/final_1.unity
     guid: dcb6b38fbb019954aa5f966f8cc66894
-  - enabled: 1
-    path: Assets/Scenes/phase 1/final_positiv_1.unity
-    guid: c8d9aa44f3006224796b4f304e6a76dd
+  - enabled: 0
+    path: 
+    guid: 00000000000000000000000000000000
   - enabled: 1
     path: Assets/Scenes/phase 2/Between_2_1.unity
     guid: 24b8aeffb411a5c4aaa960e37152a8f4
@@ -113,18 +113,18 @@ EditorBuildSettings:
   - enabled: 1
     path: Assets/Scenes/phase 5/final_5.unity
     guid: 3730ce31d8bdb18429aeab9ba85e7278
-  - enabled: 1
-    path: Assets/Scenes/phase 5/final_positiv_5.unity
-    guid: eeeee8c7c21ecd04189c087e1bb8cb4c
+  - enabled: 0
+    path: 
+    guid: 00000000000000000000000000000000
   - enabled: 1
     path: Assets/Scenes/phase 5/JamesBond.unity
     guid: eebebb137ae68064f9e33359db5ef12b
   - enabled: 1
     path: Assets/Scenes/phase 5/phase 5.unity
     guid: 9b41f700f67d2164c93edb9264255146
-  - enabled: 1
-    path: Assets/Scenes/phase 5/Won_5.unity
-    guid: bf89fd91efc00cf4cbc93f65ee118784
+  - enabled: 0
+    path: 
+    guid: 00000000000000000000000000000000
   - enabled: 1
     path: Assets/Scenes/phase 4/Between_4_1.unity
     guid: f401830234f47cd4189f4db908298da9
@@ -149,4 +149,7 @@ EditorBuildSettings:
   - enabled: 1
     path: Assets/Scenes/phase 4/Won_4.unity
     guid: c486893117249d54c9c0fceb907d7364
+  - enabled: 1
+    path: Assets/Scenes/phase 1/probe.unity
+    guid: 88c68c58e80815f4a95d8aa69c90fe8b
   m_configObjects: {}
