@@ -9,6 +9,7 @@ public class Sings_Controller : MonoBehaviour
     public GameObject playSimbol;
     public GameObject pauseSimbol;
     public AudioSource music;
+    public AudioSource ambienceMusic;
     private bool musicPlay = false;
     private float timeOfTheMusic = 0;
 
@@ -28,6 +29,7 @@ public class Sings_Controller : MonoBehaviour
         musicPlay = !musicPlay;
         if (musicPlay)
         {
+            ambienceMusic.Stop();
             music.time = timeOfTheMusic;
             playSimbol.SetActive(false);
             pauseSimbol.SetActive(true);
@@ -38,6 +40,7 @@ public class Sings_Controller : MonoBehaviour
             playSimbol.SetActive(true);
             pauseSimbol.SetActive(false);
             music.Stop(); 
+            ambienceMusic.Play();
         }
         
     }

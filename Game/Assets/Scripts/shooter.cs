@@ -25,7 +25,8 @@ public class shooter : MonoBehaviour
     // Ultra Attack
     public GameObject ultraAttack;
     public Transform startUltraAttack;
-    public ParticleSystem partsSysUltraAttack;
+    public GameObject explosionUltraAttack;
+    public Transform explosionUltraAttackStart;
     private int UltraAttackPower;
     // direction parm
     private bool dir;
@@ -109,14 +110,14 @@ public class shooter : MonoBehaviour
         {
             // Not Ultra Attack
             ultraAttackActive = false;
-            shooting();
             ShootViaArduino = false;
+            StartCoroutine(shooting());
         }
         else if (Input.GetKeyDown(KeyCode.A) & Enemy_life > 0)
         {
             // Ultra Attack
             ultraAttackActive = true;
-            shootingUltraAttack();
+            StartCoroutine(shootingUltraAttack());
         }
         // verify if player wins
         if (Enemy_life <= 0 & stopGame)
@@ -130,7 +131,7 @@ public class shooter : MonoBehaviour
         }
     }
 
-    void shooting()
+    private IEnumerator shooting()
     {
         // Play sound
         audio_1.Play();
@@ -141,6 +142,7 @@ public class shooter : MonoBehaviour
             GameObject shoot = Instantiate(bulet, start.transform.position, start.transform.rotation);
             shoot.SetActive(true);
             Destroy(shoot, 0.80f);
+            yield return new WaitForSeconds(0.6f);
             // activate particle systems
             partsSys.Play();
             // change side
@@ -154,6 +156,7 @@ public class shooter : MonoBehaviour
             GameObject shoot = Instantiate(bulet_left, start_left.transform.position, start_left.transform.rotation);
             shoot.SetActive(true);
             Destroy(shoot, 0.80f);
+            yield return new WaitForSeconds(0.6f);
             // activate particle systems
             partsSys_left.Play();
             // change side
@@ -168,16 +171,23 @@ public class shooter : MonoBehaviour
         HurtEnemyPoints();
     }
     
-    private void shootingUltraAttack()
+    private IEnumerator shootingUltraAttack()
     {
         // Play sound
         audio_2.Play();
         // init shoot
-        GameObject shoot = Instantiate(ultraAttack, startUltraAttack.transform.position, startUltraAttack.transform.rotation);
+        GameObject shoot = Instantiate(ultraAttack, startUltraAttack.position, startUltraAttack.rotation);
         shoot.SetActive(true);
-        Destroy(shoot, 0.80f);
+        Animator shootAnimator = shoot.GetComponent<Animator>();
+        shootAnimator.enabled = true;
+        Destroy(shoot, 0.8f);
+        yield return new WaitForSeconds(0.4f);
         // activate particle systems
-        partsSysUltraAttack.Play();
+        GameObject explosion = Instantiate(explosionUltraAttack, explosionUltraAttackStart.position, explosionUltraAttackStart.rotation);
+        explosion.SetActive(true);
+        Animator explosionAnimator = explosion.GetComponent<Animator>();
+        explosionAnimator.enabled = true;
+        Destroy(explosion, 0.5f);
 
         // Each shoot must hurt the enemy
         Enemy_life -= UltraAttackPower ;
@@ -220,7 +230,6 @@ public class shooter : MonoBehaviour
     
     private IEnumerator setLabel()
     {
-        yield return new WaitForSeconds(0.6f); // wait to show
         if (dir_2)
         {
             enemyHurtPoints_1.enabled = true;
@@ -236,8 +245,6 @@ public class shooter : MonoBehaviour
                 enemyHurtPoints_1.fontSize = 30;
                 enemyHurtPoints_1.text = "-" + Player_power.ToString();
             }
-            
-
         }
         else
         {
@@ -247,7 +254,7 @@ public class shooter : MonoBehaviour
             enemyHurtPoints_2.text = "-" + Player_power.ToString();
             
         }
-        yield return new WaitForSeconds(0.6f); // wait
+        yield return new WaitForSeconds(0.9f); // wait
         enemyHurtPoints_1.enabled = false;
         enemyHurtPoints_2.enabled = false;
     }

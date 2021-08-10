@@ -48,6 +48,17 @@ public class videos : MonoBehaviour
             SceneManager.LoadScene(SceneName);
         }
         
+        // Clicking in arrow can go back or go foward 10 sec
+        if (Input.GetKeyDown(KeyCode.RightArrow))
+        {
+            video.time += 15f;
+        }
+
+        if (Input.GetKeyDown(KeyCode.LeftArrow))
+        {
+            video.time -= 15f;
+        }
+
         // Pause video
         if (pauseVideo > 0)
         {

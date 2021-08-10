@@ -14,7 +14,7 @@ public class Countdown : MonoBehaviour
     public ParticleSystem psys_1;
     public ParticleSystem psys_2;
     public ParticleSystem psys_3;
-    public ParticleSystem psys_4;
+    public GameObject psys_4;
     public AudioSource audio;
     public GameObject explosion;
     public GameObject explosion_player;
@@ -36,7 +36,7 @@ public class Countdown : MonoBehaviour
         explosion_player.SetActive(false);
         ultraAttack.SetActive(false);
         planet.SetActive(false);
-        psys_4.Stop();
+        psys_4.SetActive(false);
         psys_1.Stop();
         psys_2.Stop();
         psys_3.Stop();
