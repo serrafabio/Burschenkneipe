@@ -286,7 +286,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 528a32c91c88eb141b2e140843f0315a, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  firespeed: -0.5
+  firespeed: -0.3
 --- !u!50 &73295915
 Rigidbody2D:
   serializedVersion: 4
@@ -1598,7 +1598,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 528a32c91c88eb141b2e140843f0315a, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  firespeed: -0.5
+  firespeed: -0.2
 --- !u!50 &282602870
 Rigidbody2D:
   serializedVersion: 4
@@ -1804,11 +1804,6 @@ PrefabInstance:
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: cafecd3fc3b761c45bb1553f35cf5c96, type: 3}
---- !u!198 &295831850 stripped
-ParticleSystem:
-  m_CorrespondingSourceObject: {fileID: 19800000, guid: cafecd3fc3b761c45bb1553f35cf5c96, type: 3}
-  m_PrefabInstance: {fileID: 1303051031}
-  m_PrefabAsset: {fileID: 0}
 --- !u!1 &296950584
 GameObject:
   m_ObjectHideFlags: 0
@@ -2034,6 +2029,7 @@ MonoBehaviour:
   ultraAttack: {fileID: 1055755257}
   startUltraAttack: {fileID: 1027765568}
   partsSysUltraAttack: {fileID: 259292897}
+  Enemy_life: 0
   enemyLifeDisplay: {fileID: 653322558}
   explosion: {fileID: 542905835}
   enemy: {fileID: 446756048}
@@ -2850,8 +2846,8 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: 82.5, y: 111}
-  m_SizeDelta: {x: 55.64, y: 43.765}
+  m_AnchoredPosition: {x: 95, y: 113}
+  m_SizeDelta: {x: 88, y: 70}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &419965183
 MonoBehaviour:
@@ -3029,10 +3025,12 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 944761e1530e3e649b7f55a9a83eeab4, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  bulet: {fileID: 1247139477}
-  start: {fileID: 1330921974}
-  partsSys: {fileID: 295831850}
-  audio_1: {fileID: 131659781}
+  buletEnemy: {fileID: 1247139477}
+  startEnemy: {fileID: 1330921974}
+  partsSysEnemy: {fileID: 1418244383}
+  audioEnemyShoot: {fileID: 131659781}
+  CheatActive: 0
+  Cheater: 1
   playerLifeDisplay: {fileID: 1812086447}
   explosion: {fileID: 508940421}
   audio_player: {fileID: 944988901}
@@ -4791,8 +4789,8 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: -98, y: 111}
-  m_SizeDelta: {x: 55.64, y: 43.765}
+  m_AnchoredPosition: {x: -95, y: 113}
+  m_SizeDelta: {x: 88, y: 70}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &957480539
 MonoBehaviour:
@@ -4932,7 +4930,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: e8583bbb0e083804aa8cbdf692026ea9, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  firespeed: -0.1
+  firespeed: -0.2
 --- !u!212 &977954604
 SpriteRenderer:
   m_ObjectHideFlags: 0
@@ -5746,7 +5744,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 528a32c91c88eb141b2e140843f0315a, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  firespeed: -0.5
+  firespeed: -0.4
 --- !u!4 &1218257244 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 400000, guid: bfe0ba4acc768a5448d46a6c63d8106a, type: 3}
@@ -7719,7 +7717,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 528a32c91c88eb141b2e140843f0315a, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  firespeed: -0.5
+  firespeed: -0.3
 --- !u!1001 &1775229080
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -9039,7 +9037,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 528a32c91c88eb141b2e140843f0315a, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  firespeed: -0.5
+  firespeed: -0.2
 --- !u!1 &2067905347
 GameObject:
   m_ObjectHideFlags: 0

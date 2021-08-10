@@ -44,7 +44,7 @@ public class Countdown : MonoBehaviour
         playerHurtPoints.enabled = false;
         enemyHurtPoints_2.enabled = false;
         StartCoroutine(CountdownToStart());
-        // start audio
+        // startEnemy audio
         audio.Play();
     }
 

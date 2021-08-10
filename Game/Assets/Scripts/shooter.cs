@@ -8,6 +8,7 @@ using System.Collections;
 using System.Collections.Generic;
 using System.Threading;
 using System.IO.Ports;
+using System.Security.Cryptography.X509Certificates;
 
 public class shooter : MonoBehaviour
 {
@@ -31,7 +32,7 @@ public class shooter : MonoBehaviour
     private bool dir_2;
     private bool stopGame = false;
     // Life and shoot
-    private int Enemy_life;
+    public int Enemy_life; //{ get; private set; }
     private int Player_power;
     private int intactEnemyLife;
     // globals
@@ -144,6 +145,7 @@ public class shooter : MonoBehaviour
             partsSys.Play();
             // change side
             dir = false;
+            dir_2 = true;
         }
         // left side (false)
         else
@@ -156,6 +158,7 @@ public class shooter : MonoBehaviour
             partsSys_left.Play();
             // change side
             dir = true;
+            dir_2 = false;
         }
 
         // Each shoot must hurt the enemy
@@ -178,6 +181,7 @@ public class shooter : MonoBehaviour
 
         // Each shoot must hurt the enemy
         Enemy_life -= UltraAttackPower ;
+        dir_2 = true;
         
         // call continuation
         HurtEnemyPoints();
@@ -207,6 +211,7 @@ public class shooter : MonoBehaviour
         else
         {
             enemyLifeDisplay.color = Color.red;
+            enemy.GetComponent<Enemy>().CheatActive = true;
         }
         
         // set label
@@ -221,10 +226,14 @@ public class shooter : MonoBehaviour
             enemyHurtPoints_1.enabled = true;
             if (ultraAttackActive)
             {
+                enemyHurtPoints_1.color = Color.red;
+                enemyHurtPoints_1.fontSize = 45;
                 enemyHurtPoints_1.text = "-" + UltraAttackPower.ToString();
             }
             else
             {
+                enemyHurtPoints_1.color = new Color(r: 1.00f, g: 0.65f, b:0f);
+                enemyHurtPoints_1.fontSize = 30;
                 enemyHurtPoints_1.text = "-" + Player_power.ToString();
             }
             
@@ -233,27 +242,14 @@ public class shooter : MonoBehaviour
         else
         {
             enemyHurtPoints_2.enabled = true;
-            if (ultraAttackActive)
-            {
-                enemyHurtPoints_2.text = "-" + UltraAttackPower.ToString();
-            }
-            else
-            {
-                enemyHurtPoints_2.text = "-" + Player_power.ToString();
-            }
+            enemyHurtPoints_2.color = new Color(r: 1.00f, g: 0.65f, b:0f);
+            enemyHurtPoints_2.fontSize = 30;
+            enemyHurtPoints_2.text = "-" + Player_power.ToString();
             
         }
-        yield return new WaitForSeconds(0.3f); // wait
-        if (dir_2)
-        {
-            enemyHurtPoints_1.enabled = false;
-            dir_2 = false;
-        }
-        else
-        {
-            enemyHurtPoints_2.enabled = false;
-            dir_2 = true;
-        }
+        yield return new WaitForSeconds(0.6f); // wait
+        enemyHurtPoints_1.enabled = false;
+        enemyHurtPoints_2.enabled = false;
     }
 
     private IEnumerator waitForSound()
@@ -338,5 +334,5 @@ public class shooter : MonoBehaviour
             }
         }
     }
-    
+
 }

@@ -11,16 +11,17 @@ using UnityEngine.SceneManagement;
 public class Enemy : MonoBehaviour
 {
     // Start objects in Scene
-    public GameObject bulet;
-    public Transform start;
-    public ParticleSystem partsSys;
-    public AudioSource audio_1;
+    public GameObject buletEnemy;
+    public Transform startEnemy;
+    public ParticleSystem partsSysEnemy;
+    public AudioSource audioEnemyShoot;
     // parms of life and power of the missil
     private int Enemy_power = 5;
     private int Player_life;
     private bool wait = true;
     private bool stopGame = false;
     private int intactPlayerLife;
+    public bool CheatActive = false;
     // cheater for last phase
     public int Cheater = 1;
     // globals
@@ -53,17 +54,16 @@ public class Enemy : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        
         // Shooting automatic every time interval
         if (wait == true & Player_life > 0)
         {
+            StartCoroutine(RandomEnemyPower());
             shooting();
             wait = false;
-            StartCoroutine(RandomEnemyPower());
 
         }
         
-        // TODO verify if enemy wins
+        // verify if enemy wins
         if (Player_life <= 0 & stopGame)
         {
             audioExplosionGameObject.SetActive(true);
@@ -77,13 +77,13 @@ public class Enemy : MonoBehaviour
     void shooting()
     {
         // Play sound
-        audio_1.Play();
+        audioEnemyShoot.Play();
         // init shoot
-        GameObject shoot = Instantiate(bulet, start.transform.position, start.transform.rotation);
+        GameObject shoot = Instantiate(buletEnemy, startEnemy.transform.position, startEnemy.transform.rotation);
         shoot.SetActive(true);
         Destroy(shoot, 0.80f);
         // activate particle systems
-        partsSys.Play();
+        partsSysEnemy.Play();
         //  each shoot must hurt the player ship
         Player_life -= Enemy_power;
         
@@ -115,30 +115,56 @@ public class Enemy : MonoBehaviour
     {
         var random = new System.Random();
         int time_index = random.Next(RandomTime.Count);
+        if (Cheater > 1)
+        {
+            if (CheatActive)
+            {
+                time_index = 1;
+            }
+        }
         yield return new WaitForSeconds(RandomTime[time_index]); // wait
+        
+        if (Cheater > 1)
+        {
+            if (CheatActive)
+            {
+                time_index = random.Next(RandomTime.Count);
+            }
+        }
+        
         //Launch Train
         wait = true;
         // Select the shooting power
         if (RandomTime[time_index] <= 1f)
         {
-            RandomShooting = new List<int>{2, 3, 4};
+            RandomShooting = new List<int>{3, 4, 5};
         }
         else if (RandomTime[time_index] < 4f & RandomTime[time_index] > 2f)
         {
-            RandomShooting = new List<int>{5, 6, 7};
+            RandomShooting = new List<int>{6, 7, 8};
         }
         else
         {
-            RandomShooting = new List<int>{8, 9, 10};
+            RandomShooting = new List<int>{9, 10, 11, 12, 13, 14, 15};
         }
         int i = random.Next(RandomShooting.Count);
-        Enemy_power = Cheater*RandomShooting[i];
+
+        Enemy_power = RandomShooting[i];
+        
+        if (Cheater > 1)
+        {
+            if (CheatActive)
+            {
+                Enemy_power = Cheater*RandomShooting[i];
+            }
+        }
+        
     }
     
     // ReSharper disable Unity.PerformanceAnalysis
     private IEnumerator waitForSound()
     {
-        audio_1.Stop();
+        audioEnemyShoot.Stop();
         audio_player.Play();
         //Wait Until Sound has finished playing
         while (audio_player.isPlaying)
@@ -162,9 +188,17 @@ public class Enemy : MonoBehaviour
         yield return new WaitForSeconds(0.6f); // wait to show
         
         playerHurtPoints.enabled = true;
+        if (Enemy_power >= 8)
+        {
+          playerHurtPoints.color = Color.red;
+        }
+        else
+        {
+            playerHurtPoints.color = new Color(r: 1.00f, g: 0.65f, b:0f);
+        }
         playerHurtPoints.text = "-" + Enemy_power.ToString();
         
-        yield return new WaitForSeconds(0.3f); // wait
+        yield return new WaitForSeconds(0.6f); // wait
         playerHurtPoints.enabled = false;
     }
 
