@@ -52,12 +52,12 @@
     <ImplicitlyExpandDesignTimeFacades>false</ImplicitlyExpandDesignTimeFacades>
   </PropertyGroup>
   <ItemGroup>
-     <Compile Include="Assets\Plugins\TextToTMP\Editor\TextToTMPWindow.cs" />
-     <Compile Include="Assets\Plugins\TextToTMP\Editor\Utilities.cs" />
-     <Compile Include="Assets\Plugins\TextToTMP\Editor\ScriptUpgrade.cs" />
-     <Compile Include="Assets\Plugins\TextToTMP\Editor\ReferenceCollection.cs" />
-     <Compile Include="Assets\Plugins\TextToTMP\Editor\ComponentUpgrade.cs" />
-     <None Include="Assets\Plugins\TextToTMP\Editor\TextToTMP.Editor.asmdef" />
+     <Compile Include="Assets\Packages\Plugins\TextToTMP\Editor\TextToTMPWindow.cs" />
+     <Compile Include="Assets\Packages\Plugins\TextToTMP\Editor\Utilities.cs" />
+     <Compile Include="Assets\Packages\Plugins\TextToTMP\Editor\ScriptUpgrade.cs" />
+     <Compile Include="Assets\Packages\Plugins\TextToTMP\Editor\ReferenceCollection.cs" />
+     <Compile Include="Assets\Packages\Plugins\TextToTMP\Editor\ComponentUpgrade.cs" />
+     <None Include="Assets\Packages\Plugins\TextToTMP\Editor\TextToTMP.Editor.asmdef" />
  <Reference Include="UnityEngine">
  <HintPath>C:/Program Files/Unity/Editor/Data/Managed/UnityEngine/UnityEngine.dll</HintPath>
  </Reference>
