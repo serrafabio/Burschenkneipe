@@ -12,6 +12,7 @@ public class Countdown_probe : MonoBehaviour
     public AudioSource audio;
     public GameObject ultraAttack;
     public GameObject LigthUltraAttack;
+    public GameObject SuperLight;
 
     private void Start()
     {
@@ -21,6 +22,7 @@ public class Countdown_probe : MonoBehaviour
         Missil_2.SetActive(false);
         ultraAttack.SetActive(false);
         LigthUltraAttack.SetActive(false);
+        SuperLight.SetActive(false);
         StartCoroutine(CountdownToStart());
         // startEnemy audio
         audio.Play();

@@ -26,6 +26,8 @@ public class shooter_probe : MonoBehaviour
     private int UltraAttackPower;
     public GameObject LightUltraAttack;
     public Transform _startLightUltraAttack;
+    public GameObject SuperLight;
+    public Transform _starSupertLight;
     // direction parm
     private bool dir;
     private bool dir_2;
@@ -158,6 +160,10 @@ public class shooter_probe : MonoBehaviour
     {
         // Play sound
         audio_2.Play();
+        // Super Light
+        GameObject superlight = Instantiate(SuperLight, _starSupertLight.position, _starSupertLight.rotation);
+        superlight.SetActive(true);
+        Destroy(superlight, 0.15f);
         // init shoot
         GameObject shoot = Instantiate(ultraAttack, startUltraAttack.position, startUltraAttack.rotation);
         shoot.SetActive(true);
