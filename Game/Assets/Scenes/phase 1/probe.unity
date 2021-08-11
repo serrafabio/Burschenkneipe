@@ -828,7 +828,7 @@ GameObject:
   - component: {fileID: 171494856}
   - component: {fileID: 171494855}
   m_Layer: 0
-  m_Name: Phase 1 - sound
+  m_Name: sound
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -844,9 +844,9 @@ AudioSource:
   m_Enabled: 1
   serializedVersion: 4
   OutputAudioMixerGroup: {fileID: 0}
-  m_audioClip: {fileID: 8300000, guid: a5c08d9a56b724f9abb5c05c5809efcd, type: 3}
+  m_audioClip: {fileID: 8300000, guid: 7421e05ffb779244c94aa2524bd6432d, type: 3}
   m_PlayOnAwake: 0
-  m_Volume: 0.5
+  m_Volume: 1
   m_Pitch: 1
   Loop: 1
   Mute: 0
