@@ -1,6 +1,8 @@
+using System;
 using System.Collections;
 using UnityEngine;
 using UnityEngine.UI;
+using UnityEngine.SceneManagement;
 
 public class Countdown : MonoBehaviour
 {
@@ -50,6 +52,14 @@ public class Countdown : MonoBehaviour
         StartCoroutine(CountdownToStart());
         // startEnemy audio
         audio.Play();
+    }
+
+    private void Update()
+    {
+        if (Input.GetKeyDown(KeyCode.Escape))
+        {
+            SceneManager.LoadScene("menu");
+        }
     }
 
     IEnumerator CountdownToStart()

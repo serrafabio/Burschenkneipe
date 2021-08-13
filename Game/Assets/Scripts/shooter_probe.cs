@@ -57,6 +57,9 @@ public class shooter_probe : MonoBehaviour
     // Change scene
     public string SceneName;
     private bool ultraAttackActive = false;
+    // To ignore or verify if the button can be shoot
+    private List<string> permitedElements = new List<string>() {"2", "3", "4", "5", "6", "7", "8", "9", "a", "b", "c", "d"};
+    private List<string> notPermitedElements =  new List<string>() {"m"};
     
     void Start()
     {   
@@ -95,10 +98,9 @@ public class shooter_probe : MonoBehaviour
             
                 Debug.Log("Nothing capture");
                 throw ex;
-            }  
+            }
         }
-        
-        
+
         // shooting
         if ((Input.GetKeyDown(KeyCode.Space) | ShootViaArduino) & Enemy_life > 0)
         {
@@ -118,6 +120,34 @@ public class shooter_probe : MonoBehaviour
         {
             Debug.Log("Leaving test");
             StartCoroutine(waitForSound());
+        }
+        
+        // Stop button to work, if the person is to drunk
+        if (Input.GetKeyDown(KeyCode.Alpha0)) {PermitOrNotUserToPlay("a");}
+        if (Input.GetKeyDown(KeyCode.Alpha1)) {PermitOrNotUserToPlay("b");}
+        if (Input.GetKeyDown(KeyCode.Alpha2)) {PermitOrNotUserToPlay("2");}
+        if (Input.GetKeyDown(KeyCode.Alpha3)) {PermitOrNotUserToPlay("3");}
+        if (Input.GetKeyDown(KeyCode.Alpha4)) {PermitOrNotUserToPlay("4");}
+        if (Input.GetKeyDown(KeyCode.Alpha5)) {PermitOrNotUserToPlay("5");}
+        if (Input.GetKeyDown(KeyCode.Alpha6)) {PermitOrNotUserToPlay("6");}
+        if (Input.GetKeyDown(KeyCode.Alpha7)) {PermitOrNotUserToPlay("7");}
+        if (Input.GetKeyDown(KeyCode.Alpha8)) {PermitOrNotUserToPlay("8");}
+        if (Input.GetKeyDown(KeyCode.Alpha9)) {PermitOrNotUserToPlay("9");}
+        if (Input.GetKeyDown(KeyCode.Q)) {PermitOrNotUserToPlay("c");}
+        if (Input.GetKeyDown(KeyCode.W)) {PermitOrNotUserToPlay("d");}
+    }
+    
+    private void PermitOrNotUserToPlay(string element)
+    {
+        if (notPermitedElements.Contains(element))
+        {
+            permitedElements.Add(element);
+            notPermitedElements.Remove(element);
+        }
+        else
+        {
+            notPermitedElements.Add(element);
+            permitedElements.Remove(element);   
         }
     }
 
@@ -315,10 +345,15 @@ public class shooter_probe : MonoBehaviour
         if (isConnected)
         {
             string received = _serialPort.ReadExisting();
-            if (received.Contains("s"))
+            if (received.Length > 0)
             {
-                ShootViaArduino = true;
+                received = received.Substring(0, received.IndexOf("\n"));
+                if (permitedElements.Contains(received))
+                {
+                    ShootViaArduino = true;
+                }
             }
+            
         }
     }
 

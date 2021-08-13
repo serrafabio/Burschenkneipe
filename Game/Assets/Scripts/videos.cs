@@ -11,15 +11,18 @@ public class videos : MonoBehaviour
     public VideoPlayer video;
     public string SceneName;
     private bool StopVideo = false;
-    private double timeOfTheVideo = 0f;
-    public double pauseVideo;
+    private double timeOfTheVideo = 0d;
+    public double pauseVideo_1 = -1.0d;
+    public double pauseVideo_2 = -1.0d;
     private bool videoStopped = false;
-    private int maxStops = 1;
-    private int countStops = 0;
+    private bool pauseVideo1Active = false;
+    private bool pauseVideo2Active = false;
+    public AudioSource ambientSound;
 
     private void Start()
     {
         video.Play();
+        ambientSound.Stop();
     }
 
     // Update is called once per frame
@@ -36,6 +39,7 @@ public class videos : MonoBehaviour
             }
             else
             {
+                ambientSound.Stop();
                 video.time = timeOfTheVideo;
                 video.Play();
             }
@@ -58,17 +62,40 @@ public class videos : MonoBehaviour
         {
             video.time -= 15f;
         }
-
+        
         // Pause video
-        if (pauseVideo > 0)
+        if (pauseVideo_1 > 0)
         {
-            if (video.time >= pauseVideo & countStops < maxStops)
+           
+            if (video.time >= pauseVideo_1 & !pauseVideo1Active)
             {
                 videoStopped = true;
-                countStops++;
+                ambientSound.Play();
+                pauseVideo1Active = true;
+                
+            } 
+            else if (video.time < pauseVideo_1 & pauseVideo1Active & video.time > 0)
+            {
+                pauseVideo1Active = false;
             }
-            
         }
+        if (pauseVideo_2 > 0)
+        {
+            if (video.time >= pauseVideo_2 & !pauseVideo2Active)
+            {
+                videoStopped = true;
+                ambientSound.Play();
+                pauseVideo2Active = true;
+                
+            } 
+            else if (video.time < pauseVideo_2 & pauseVideo2Active & video.time > 0)
+            {
+                pauseVideo2Active = false;
+            }
+        }
+
         
+
     }
+    
 }

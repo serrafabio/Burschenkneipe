@@ -13,6 +13,20 @@ const int BUTTON_10 = 11; //Pushbutton Input to Pin Nr 11
 const int BUTTON_11 = 12; //Pushbutton Input to Pin Nr 12
 const int BUTTON_12 = 13; //Pushbutton Input to Pin Nr 13
 
+// String output
+const char button1String[] = "2\n";
+const char button2String[] = "3\n";
+const char button3String[] = "4\n";
+const char button4String[] = "5\n";
+const char button5String[] = "6\n";
+const char button6String[] = "7\n";
+const char button7String[] = "8\n";
+const char button8String[] = "9\n";
+const char button9String[] = "a\n";
+const char button10String[] = "b\n";
+const char button11String[] = "c\n";
+const char button12String[] = "d\n";
+
 // Instatiate variables
 int ButtonState_1 = 0;
 int lastState_1 = 0;
@@ -81,7 +95,7 @@ void setup() {
 
 }
 
-int buttonAction(const int button, int buttonState, int lastState, int* stopPressure)
+int buttonAction(const int button, int buttonState, int lastState, int* stopPressure, const char output[])
 {
     buttonState = digitalRead(button);
 
@@ -91,7 +105,7 @@ int buttonAction(const int button, int buttonState, int lastState, int* stopPres
         *stopPressure = 1;
     } else if (buttonState == HIGH && lastState == HIGH && *stopPressure == 1) {
         //Serial.print("The button was released\n");
-        Serial.print("s\n");
+        Serial.print(output);
         *stopPressure = 0;
     }
 
@@ -103,17 +117,17 @@ int buttonAction(const int button, int buttonState, int lastState, int* stopPres
 
 void loop() {
         // put your main code here, to run repeatedly:
-        lastState_1 = buttonAction(BUTTON_1, ButtonState_1, lastState_1, &StopPressure_1);
-        lastState_2 = buttonAction(BUTTON_2, ButtonState_2, lastState_2, &StopPressure_2);
-        lastState_3 = buttonAction(BUTTON_3, ButtonState_3, lastState_3, &StopPressure_3);
-        lastState_4 = buttonAction(BUTTON_4, ButtonState_4, lastState_4, &StopPressure_4);
-        lastState_5 = buttonAction(BUTTON_5, ButtonState_5, lastState_5, &StopPressure_5);
-        lastState_6 = buttonAction(BUTTON_6, ButtonState_6, lastState_6, &StopPressure_6);
-        lastState_7 = buttonAction(BUTTON_7, ButtonState_7, lastState_7, &StopPressure_7);
-        lastState_8 = buttonAction(BUTTON_8, ButtonState_8, lastState_8, &StopPressure_8);
-        lastState_9 = buttonAction(BUTTON_9, ButtonState_9, lastState_9, &StopPressure_9);
-        lastState_10 = buttonAction(BUTTON_10, ButtonState_10, lastState_10, &StopPressure_10);
-        lastState_11 = buttonAction(BUTTON_11, ButtonState_11, lastState_11, &StopPressure_11);
-        lastState_12 = buttonAction(BUTTON_12, ButtonState_12, lastState_12, &StopPressure_12);
+        lastState_1 = buttonAction(BUTTON_1, ButtonState_1, lastState_1, &StopPressure_1, button1String);
+        lastState_2 = buttonAction(BUTTON_2, ButtonState_2, lastState_2, &StopPressure_2, button2String);
+        lastState_3 = buttonAction(BUTTON_3, ButtonState_3, lastState_3, &StopPressure_3, button3String);
+        lastState_4 = buttonAction(BUTTON_4, ButtonState_4, lastState_4, &StopPressure_4, button4String);
+        lastState_5 = buttonAction(BUTTON_5, ButtonState_5, lastState_5, &StopPressure_5, button5String);
+        lastState_6 = buttonAction(BUTTON_6, ButtonState_6, lastState_6, &StopPressure_6, button6String);
+        lastState_7 = buttonAction(BUTTON_7, ButtonState_7, lastState_7, &StopPressure_7, button7String);
+        lastState_8 = buttonAction(BUTTON_8, ButtonState_8, lastState_8, &StopPressure_8, button8String);
+        lastState_9 = buttonAction(BUTTON_9, ButtonState_9, lastState_9, &StopPressure_9, button9String);
+        lastState_10 = buttonAction(BUTTON_10, ButtonState_10, lastState_10, &StopPressure_10, button10String);
+        lastState_11 = buttonAction(BUTTON_11, ButtonState_11, lastState_11, &StopPressure_11, button11String);
+        lastState_12 = buttonAction(BUTTON_12, ButtonState_12, lastState_12, &StopPressure_12, button12String);
 
 }
