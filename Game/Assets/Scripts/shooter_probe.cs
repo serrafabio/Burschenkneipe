@@ -61,6 +61,7 @@ public class shooter_probe : MonoBehaviour
     private List<string> permitedElements = new List<string>() {"2", "3", "4", "5", "6", "7", "8", "9", "a", "b", "c", "d"};
     private List<string> notPermitedElements =  new List<string>() {"m"};
     
+    
     void Start()
     {   
         // Read the information required

@@ -27,6 +27,10 @@ public class Countdown : MonoBehaviour
     public GameObject planet;
     public GameObject LigthUltraAttack;
     public GameObject SuperLight;
+    // labels
+    public GameObject labelEnemy;
+    public GameObject labelPlayer;
+    public GameObject labelNames;
 
     private void Start()
     {
@@ -49,6 +53,9 @@ public class Countdown : MonoBehaviour
         enemyHurtPoints_2.enabled = false;
         LigthUltraAttack.SetActive(false);
         SuperLight.SetActive(false);
+        labelEnemy.SetActive(false);
+        labelPlayer.SetActive(false);
+        labelNames.SetActive(false);
         StartCoroutine(CountdownToStart());
         // startEnemy audio
         audio.Play();
@@ -81,5 +88,8 @@ public class Countdown : MonoBehaviour
         Enemy.SetActive(true);
         Player.SetActive(true);
         planet.SetActive(true);
+        labelEnemy.SetActive(true);
+        labelPlayer.SetActive(true);
+        labelNames.SetActive(true);
     }
 }
