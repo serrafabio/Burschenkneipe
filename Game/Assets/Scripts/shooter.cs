@@ -387,9 +387,20 @@ public class shooter : MonoBehaviour
                 if (permitedElements.Contains(received))
                 {
                     ShootViaArduino = true;
+                    StartCoroutine(avoidToShootMoreThanOneSecPerTime(received));
                 }
             }
             
+        }
+    }
+
+    private IEnumerator avoidToShootMoreThanOneSecPerTime(string element)
+    {
+        if (!notPermitedElements.Contains(element))
+        {
+            permitedElements.Remove(element);
+            yield return new WaitForSeconds(1.0f);
+            permitedElements.Add(element);
         }
     }
 
