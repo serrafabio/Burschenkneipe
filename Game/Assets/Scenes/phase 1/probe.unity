@@ -1791,12 +1791,10 @@ MonoBehaviour:
   SuperLight: {fileID: 898050755}
   _starSupertLight: {fileID: 234352228}
   Enemy_life: 100
+  globals: 1
   enemyLifeDisplay: {fileID: 653322558}
   enemyHurtPoints_1: {fileID: 957480539}
   enemyHurtPoints_2: {fileID: 419965183}
-  labelEnemy: {fileID: 653322555}
-  labelPlayer: {fileID: 1812086444}
-  labelNames: {fileID: 1509515555}
   SceneName: Instructions
 --- !u!1 &316022581
 GameObject:
@@ -3995,7 +3993,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!114 &898050756
 MonoBehaviour:
   m_ObjectHideFlags: 0

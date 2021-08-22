@@ -1,9 +1,10 @@
-[600] life_ship 0
+[1000] life_ship 0
 [1000] life_enemy 1
-[5]  shoot_ship 2
+[9]  shoot_ship 2
 [300]  time_alarm_saufen(s) 3
 [50]  ultraAttack_ship 4
 [COM3] arduinoPort 5
 [40]  manual_shoot_enemy 6
-[6]  wait_time_for_next_shoot_from_enemy(s) 7
-[3]  manual_wait_shoot_power_enemy 8
+[10]  wait_time_for_next_shoot_from_enemy(s) 7
+[2]  manual_wait_shoot_power_enemy 8
+[30]  wait_bonus_Time 9

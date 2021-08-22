@@ -1374,7 +1374,9 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: "Hier kommt der text, der wir f\xFCr jede phase schreiben m\xFCssen"
+  m_text: "Unsere mutigen Top-Secret B\xFCndesbr\xFCder haben die Rhenanianer umgestimmt,
+    zu dem Kongress zu kommen. Unsere Mission ist so viel wie m\xF6glich zu saufen,
+    um unsere besten Politiker in Sicherheit zu wissen."
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: 5302535af1044152a457ed104f1f4b91, type: 2}
   m_sharedMaterial: {fileID: 2164040, guid: 5302535af1044152a457ed104f1f4b91, type: 2}

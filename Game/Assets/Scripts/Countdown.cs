@@ -31,6 +31,7 @@ public class Countdown : MonoBehaviour
     public GameObject labelEnemy;
     public GameObject labelPlayer;
     public GameObject labelNames;
+    public GameObject bonusLabel;
 
     private void Start()
     {
@@ -56,6 +57,7 @@ public class Countdown : MonoBehaviour
         labelEnemy.SetActive(false);
         labelPlayer.SetActive(false);
         labelNames.SetActive(false);
+        bonusLabel.SetActive(false);
         StartCoroutine(CountdownToStart());
         // startEnemy audio
         audio.Play();

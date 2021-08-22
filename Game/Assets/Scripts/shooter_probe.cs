@@ -37,6 +37,7 @@ public class shooter_probe : MonoBehaviour
     private int Player_power;
     private int intactEnemyLife;
     // globals
+    public bool globals = true;
     private string path = "C:\\Users\\serra\\OneDrive\\Documentos\\WiP\\Frisia\\Burschenkneipe\\Game\\Assets\\Scripts";
     // Enemy life text
     public Text enemyLifeDisplay;
@@ -64,6 +65,7 @@ public class shooter_probe : MonoBehaviour
     
     void Start()
     {   
+        
         // Read the information required
         call_and_read_life();
         enemyLifeDisplay.color = Color.green;
@@ -136,6 +138,7 @@ public class shooter_probe : MonoBehaviour
         if (Input.GetKeyDown(KeyCode.Alpha9)) {PermitOrNotUserToPlay("9");}
         if (Input.GetKeyDown(KeyCode.Q)) {PermitOrNotUserToPlay("c");}
         if (Input.GetKeyDown(KeyCode.W)) {PermitOrNotUserToPlay("d");}
+        
     }
     
     private void PermitOrNotUserToPlay(string element)
@@ -294,7 +297,13 @@ public class shooter_probe : MonoBehaviour
     private void call_and_read_life()
     {
         int cont = 0;
-        var lines = File.ReadAllLines(path + "\\globals.txt")
+        // Test if read globals 1 or 2
+        string globals_str = "\\globals.txt";
+        if (!globals)
+        {
+            globals_str = "\\globals_2.txt";
+        }
+        var lines = File.ReadAllLines(path + globals_str)
             .Select(x => x.Split(new[] {'[', ']'}, StringSplitOptions.RemoveEmptyEntries));
         foreach (var pair in lines)
         {
@@ -319,7 +328,7 @@ public class shooter_probe : MonoBehaviour
         }
         
     }
-    
+
     // Connect to arduino
     private void ConnectToArduino()
     {
@@ -363,7 +372,7 @@ public class shooter_probe : MonoBehaviour
         if (!notPermitedElements.Contains(element))
         {
             permitedElements.Remove(element);
-            yield return new WaitForSeconds(1.0f);
+            yield return new WaitForSeconds(0.3f);
             permitedElements.Add(element);
         }
     }

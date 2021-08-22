@@ -38,7 +38,11 @@ public class shooter : MonoBehaviour
     public int Enemy_life; //{ get; private set; }
     private int Player_power;
     private int intactEnemyLife;
+    private bool BonusBool = false;
+    private int TimeOfBonus = 30;
+    private bool BonusTimerActive = false;
     // globals
+    public bool globals = true;
     private string path = "C:\\Users\\serra\\OneDrive\\Documentos\\WiP\\Frisia\\Burschenkneipe\\Game\\Assets\\Scripts";
     // Enemy life text
     public Text enemyLifeDisplay;
@@ -50,6 +54,7 @@ public class shooter : MonoBehaviour
     // Label
     public Text enemyHurtPoints_1;
     public Text enemyHurtPoints_2;
+    public GameObject BonusLabel;
     // Arduino 
     private bool isConnected = false;
     private bool ShootViaArduino = false;
@@ -147,6 +152,14 @@ public class shooter : MonoBehaviour
         if (Input.GetKeyDown(KeyCode.Alpha9)) {PermitOrNotUserToPlay("9");}
         if (Input.GetKeyDown(KeyCode.Q)) {PermitOrNotUserToPlay("c");}
         if (Input.GetKeyDown(KeyCode.W)) {PermitOrNotUserToPlay("d");}
+        if (Input.GetKeyDown(KeyCode.B))
+        {
+            if (!BonusTimerActive)
+            {
+                BonusBool = !BonusBool;
+                IncreaseShootPower();
+            }
+        }
         
     }
 
@@ -329,7 +342,12 @@ public class shooter : MonoBehaviour
     private void call_and_read_life()
     {
         int cont = 0;
-        var lines = File.ReadAllLines(path + "\\globals.txt")
+        string globals_str = "\\globals.txt";
+        if (!globals)
+        {
+            globals_str = "\\globals_2.txt";
+        }
+        var lines = File.ReadAllLines(path + globals_str)
             .Select(x => x.Split(new[] {'[', ']'}, StringSplitOptions.RemoveEmptyEntries));
         foreach (var pair in lines)
         {
@@ -349,6 +367,10 @@ public class shooter : MonoBehaviour
             else if (cont == 5)
             {
                 portName = pair.First().ToString();
+            }
+            else if (cont == 9)
+            {
+                TimeOfBonus = Int16.Parse(pair.First());
             }
             cont += 1;
         }
@@ -394,12 +416,63 @@ public class shooter : MonoBehaviour
         }
     }
 
+    private void IncreaseShootPower()
+    {
+        if (BonusBool)
+        {
+            UltraAttackPower = 2 * UltraAttackPower;
+            Player_power = 2 * Player_power;
+        }
+        else
+        {
+            UltraAttackPower = UltraAttackPower/2;
+            Player_power = Player_power/2;
+        }
+        StartCoroutine(TimerForBonusTime());
+    }
+
+    private IEnumerator TimerForBonusTime()
+    {
+        BonusTimerActive = true;
+        StartCoroutine(LabelBonus());
+        yield return new WaitForSeconds(TimeOfBonus);
+        BonusBool = false;
+        BonusTimerActive = false;
+        UltraAttackPower = UltraAttackPower/2;
+        Player_power = Player_power/2;
+    }
+
+    private IEnumerator LabelBonus()
+    {
+        bool blink = false;
+        BonusLabel.SetActive(true);
+        float timerOfLabel = 0f;
+        while (timerOfLabel < TimeOfBonus)
+        {
+            blink = !blink;
+            if (blink)
+            {
+                yield return new WaitForSeconds(1.5f);
+                BonusLabel.SetActive(false);
+                timerOfLabel += 1.5f;
+            }
+            else
+            {
+                yield return new WaitForSeconds(0.5f);
+                BonusLabel.SetActive(true);
+                timerOfLabel += 0.5f;
+            }
+        }
+        BonusLabel.SetActive(false);
+    }
+    
+
     private IEnumerator avoidToShootMoreThanOneSecPerTime(string element)
     {
         if (!notPermitedElements.Contains(element))
         {
             permitedElements.Remove(element);
-            yield return new WaitForSeconds(1.0f);
+            yield return new WaitForSeconds(0.3f);
             permitedElements.Add(element);
         }
     }
